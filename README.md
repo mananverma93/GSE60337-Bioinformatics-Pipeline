@@ -21,7 +21,7 @@ After normalization, the data is explored to verify batch-effect removal and ide
 A Principal Component Analysis (PCA) plot is generated (`pca_by_strain_full.png`) to visualize sample clustering and confirm separation based on the biological factor of interest (mouse strain).
 A Heatmap of the top variable genes is generated to visualize global expression patterns.
 
-4. Differential Expression (DE) Analysis
+### 4. Differential Expression (DE) Analysis
 The core statistical test to identify genes whose expression levels are significantly different between the two strains.
 Comparison: C57BL/6J vs. CBA/CaJ.
 Method: A two-sample Student's t-test is applied for every gene to calculate raw p-values and log2fold changes.
