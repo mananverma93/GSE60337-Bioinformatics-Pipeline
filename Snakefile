@@ -12,9 +12,11 @@ rule all:
         normalized = f"{PROCESSED_DIR}/GSE60337_full_normalized.csv",
         norm_plots = f"{PROCESSED_DIR}/normalization_comparison_full.png",
         pca_plot = f"{PROCESSED_DIR}/pca_by_strain_full.png",
-        heatmap = f"{PROCESSED_DIR}/top_variable_genes_heatmap_full.png", # ADDED: Heatmap from EDA
+        heatmap = f"{PROCESSED_DIR}/top_variable_genes_heatmap_full.png", 
         de_results = f"{PROCESSED_DIR}/DE_full_C57BL_6J_vs_CBA_CaJ.csv",
-        volcano = f"{PROCESSED_DIR}/volcano_plot_full_C57BL_6J_vs_CBA_CaJ.png"
+        volcano = f"{PROCESSED_DIR}/volcano_plot_full_C57BL_6J_vs_CBA_CaJ.png",
+        annotated = f"{PROCESSED_DIR}/DE_annotated_C57BL_6J_vs_CBA_CaJ.csv"  
+
 
 # Rule 1: Quality Control
 rule quality_control:
@@ -61,3 +63,13 @@ rule differential_expression:
         group2 = "CBA/CaJ"
     script:
         "scripts/dea.py"
+
+# Rule 5: Gene Annotation
+rule gene_annotation:
+    input:
+        de_results = f"{PROCESSED_DIR}/DE_full_C57BL_6J_vs_CBA_CaJ.csv",
+        annotation = "data/raw/GPL6246-18741.txt"  # Updated filename
+    output:
+        f"{PROCESSED_DIR}/DE_annotated_C57BL_6J_vs_CBA_CaJ.csv"
+    script:
+        "scripts/gene_annotation.py"
