@@ -12,7 +12,7 @@ The primary goal is to identify **Differentially Expressed (DE) genes** that dis
 | :--- | :--- |
 | **Dataset** | GSE60337 - CD4+ T cell gene expression across 82 samples |
 | **Platform** | Affymetrix Mouse Gene 1.0 ST Array (24,922 probes) |
-| **Result** | **65 significantly DE genes** ($\text{FDR} < 0.05$) |
+| **Result** | **65 significantly DE genes** (`FDR` < 0.05) |
 | **Key Finding** | Identified immune-related genes (`H2-D1`, `H2-Ob`, `Apobec3`) consistent with T-cell biology |
 
 ---
@@ -28,7 +28,7 @@ The primary goal is to identify **Differentially Expressed (DE) genes** that dis
 
 ## Analysis Workflow: From Raw Data to Differential Expression
 
-The automated $\text{Snakemake}$ pipeline processes the raw expression data through four distinct, reproducible stages:
+The automated $\text{Snakemake}$ pipeline processes the raw expression data through five distinct, reproducible stages:
 
 ### 1. Quality Control ($\text{QC}$)
 The raw expression matrix is initially filtered to ensure data integrity and reduce noise.
@@ -51,9 +51,13 @@ After normalization, the data is explored to verify batch-effect removal and ide
 The core statistical test to identify genes whose expression levels are significantly different between the two strains.
 * **Comparison:** C57BL/6J ($\text{n}=5$) vs. CBA/CaJ ($\text{n}=4$).
 * **Method:** A two-sample **Student's $\text{t}$-test** is applied for every gene.
-* **Correction:** $\text{P}$-values are adjusted using the **$\text{FDR}$ (False Discovery Rate) method (Benjamini-Hochberg)** to control the family-wise error rate.
+* **Correction:** $\text{P}$-values are adjusted using the **$\text{FDR}$ (False Discovery Rate) method (Benjamini-Hochberg)**.
 * **Result:** **65 genes significant** at $\text{FDR} < 0.05$.
-* **Annotation:** Mapped **$99.2\%$ of probes** to gene symbols using $\text{GPL}6246$ annotation.
+
+### **5. Gene Annotation**
+Probe IDs are mapped to official gene symbols to facilitate biological interpretation of the results.
+* **Action:** Probe IDs from the $\text{DE}$ results are mapped using the $\text{GPL}6246$ platform annotation file.
+* **Result:** Achieved **$99.2\%$ probe-to-gene annotation coverage**.
 
 ---
 
