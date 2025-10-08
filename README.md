@@ -13,7 +13,7 @@ The primary goal is to identify **Differentially Expressed (DE) genes** that dis
 | **Dataset** | GSE60337 - CD4+ T cell gene expression across 82 samples |
 | **Platform** | Affymetrix Mouse Gene 1.0 ST Array (24,922 probes) |
 | **Result** | **65 significantly DE genes** ($\text{FDR} < 0.05$) |
-| **Key Finding** | Identified immune-related genes ($\text{H2}$-$\text{D1}$, $\text{H2}$-$\text{Ob}$, $\text{Apobec3}$) consistent with T-cell biology |
+| **Key Finding** | Identified immune-related genes (`H2-D1`, `H2-Ob`, `Apobec3`) consistent with T-cell biology |
 
 ---
 
